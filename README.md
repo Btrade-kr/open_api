@@ -1,4 +1,7 @@
-# API Info
+Btrade API
+=====
+
+### API Info
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Btrade는 개발자를 위해 API를 제공하여 다양한 앱과 프로그램을 개발할 수 있는 환경을 제공합니다.
 
@@ -10,7 +13,7 @@
 
 &nbsp;
 
-### 권한 및 주의사항
+#### 권한 및 주의사항
 
 ```
 
@@ -21,7 +24,7 @@
 ```
 &nbsp;
 
-### 권한 및 주의사항
+#### Open API 사용 가이드
 
 ```
 
@@ -31,31 +34,32 @@
 
 ```
 
-
-# API 공지
+&nbsp;
+### API 공지
 
 #### Open API  변경사항 안내 (2018. 10. 02)
 
 
-안녕하세요.
+&nbsp;&nbsp;&nbsp;안녕하세요.
 
-비트레이드 개발자 센터입니다.
+&nbsp;&nbsp;&nbsp;비트레이드 개발자 센터입니다.
 
-Open API 변경 사항에 대해 아래와 같이 안내 드립니다.
-
-&nbsp;
+&nbsp;&nbsp;&nbsp;Open API 변경 사항에 대해 아래와 같이 안내 드립니다.
 
 
 ##### Open API 변경사항
 
-해당 변경 사항은 __2018.10.10 11:00__ 부터 적용되오니, 해당 내용과 적용 시점을 반드시 확인하시고
+&nbsp;&nbsp;&nbsp;해당 변경 사항은 __2018.10.10 11:00__ 부터 적용되오니, 해당 내용과 적용 시점을 반드시 확인하시고
 
-적용해주시기 바랍니다.
+&nbsp;&nbsp;&nbsp;적용해주시기 바랍니다.
 
+&nbsp;
 
-# Reference
+&nbsp;
 
-### Public API
+### Reference
+
+#### Public API
 ---
 
 #### Ticker - 거래소 마지막 거래 정보
@@ -87,10 +91,9 @@ __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|currency|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|currency|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 __[Output Parameters]__
-
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Key Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status: 0000|정상|
@@ -241,7 +244,9 @@ __[Input Parameter]__
 
 &nbsp;
 
-### Token
+&nbsp;
+
+#### Token
 ---
 
 #### Create - 최초 토큰 생성
