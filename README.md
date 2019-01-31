@@ -120,7 +120,7 @@ __[Output Parameters]__
 
 &nbsp;
 
-#### 2. Orderbook - 거래소 판/구매 등록 대기 또는 거래 중 내역 정보
+#### Orderbook - 거래소 판/구매 등록 대기 또는 거래 중 내역 정보
 
 __[GET]__ &nbsp;&nbsp;&nbsp;http://localhost:9999/api/orderbook/currency/BTC
 
@@ -251,10 +251,10 @@ __[Input Parameter]__
 
 &nbsp;
 
-#### Token
+#### 2. Token
 ---
 
-#### 1. Create - 최초 토큰 생성
+#### Create - 최초 토큰 생성
 
 __[POST]__ &nbsp;&nbsp;&nbsp;
 
