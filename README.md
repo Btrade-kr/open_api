@@ -39,6 +39,7 @@ Btrade API
 
 &nbsp;
 ### API 공지
+---
 
 #### Open API  변경사항 안내 (2018. 10. 02)
 
@@ -61,9 +62,9 @@ Btrade API
 &nbsp;
 
 ### Reference
-
-#### Public API
 ---
+
+#### 1. Public API
 
 #### Ticker - 거래소 마지막 거래 정보
 
@@ -119,7 +120,7 @@ __[Output Parameters]__
 
 &nbsp;
 
-#### Orderbook - 거래소 판/구매 등록 대기 또는 거래 중 내역 정보
+#### 2. Orderbook - 거래소 판/구매 등록 대기 또는 거래 중 내역 정보
 
 __[GET]__ &nbsp;&nbsp;&nbsp;http://localhost:9999/api/orderbook/currency/BTC
 
@@ -253,7 +254,7 @@ __[Input Parameter]__
 #### Token
 ---
 
-#### Create - 최초 토큰 생성
+#### 1. Create - 최초 토큰 생성
 
 __[POST]__ &nbsp;&nbsp;&nbsp;
 
