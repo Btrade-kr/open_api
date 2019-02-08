@@ -49,9 +49,9 @@ Btrade API
 
 #### Ticker - 거래소 마지막 거래 정보
 
-__[GET]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/ticker/currency/{coin_code}
+__[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
-__[Curl]__ &nbsp;&nbsp;&nbsp;curl -X GET --header 'Accept: application/json' 'http://localhost:9999/api/ticker/currency/{coin_code}'
+__[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'http://api.btrade.co.kr/api/ticker/currency/{coin_code}'```
 
 __[Response Body]__
 
@@ -100,11 +100,11 @@ __[Output Parameters]__
 
 &nbsp;
 
-#### Orderbook - 거래소 판/구매 등록 대기 또는 거래 중 내역 정보
+#### Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
 
-__[GET]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/orderbook/currency/{coin_code}
+__[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/orderbook/currency/{coin_code}```
 
-__[Curl]__ &nbsp;&nbsp;&nbsp;curl -X GET --header 'Accept: application/json' 'http://localhost:9999/api/orderbook/currency/{coin_code}'
+__[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'https://api.btrade.co.kr/api/orderbook/currency/{coin_code}'```
 
 
 __[Response Body]__
@@ -250,12 +250,10 @@ __[Output Parameters]__
 
 #### Create - 최초 토큰 생성
 
-__[POST]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/v1/access_token
+__[POST]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/v1/access_token```
 
 ```
 {
-  "deal_money":0.0,
-  "amount":0.0,
   "nonce":"1548998552194",
   "hstr":"54c25b135d6e80129b71e399fecf522016ab528be7459b1c33c73730de67fad6",
   "apikey":"BTkYXt3hv5BxzieKxHiE9zovAsDSVXraNpJ",
@@ -267,10 +265,13 @@ __[POST]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/v1/access_token
 __[Curl]__
 
 ```
-curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' -d '{"refresh_token":"48f9b90cee15348744b0da1a8e995c5d3833fd985d8f9dd138c04755b18731c7",  \ 
- "expires_in":60,  \ 
- "grant_type":"REFRESH" \ 
- }' 'http://localhost:9999/api/v1/access_token'
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' -d '{ \ 
+   "nonce":"1548998552194", \ 
+   "hstr":"54c25b135d6e80129b71e399fecf522016ab528be7459b1c33c73730de67fad6", \ 
+   "apikey":"BTkYXt3hv5BxzieKxHiE9zovAsDSVXraNpJ", \ 
+   "grant_type":"APIKEY", \ 
+   "expires_in":60 \ 
+ }' 'https://api.btrade.co.kr/api/v1/access_token'
 ```
 
 __[Response Body]__
@@ -296,7 +297,7 @@ __[Input Parameter]__
 |hstr|sha256( apikey + secretkey + nonce )|
 |apikey|회원 API key|
 |grant_type|APIKEY|
-|expires_in|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token 만료시간 (Minute Time)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|expires_in|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token 만료시간 (Minute Time, 최소30분 ~ 최대 60분)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 __[Output Parameter]__
 
@@ -323,6 +324,16 @@ __[POST]__
 }
 ```
 
+__[Curl]__
+
+```
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' -d '{ \ 
+   "refresh_token": "48f9b90cee15348744b0da1a8e995c5d3833fd985d8f9dd138c04755b18731c7", \ 
+   "expires_in":60, \ 
+   "grant_type":"REFRESH" \ 
+ }' 'https://api.btrade.co.kr/api/v1/access_token'
+```
+
 __[Response Body]__
 
 ```
@@ -342,8 +353,8 @@ __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|refresh_token|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token API에서 생성된 Refresh Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-|expires_in|Access Token 만료시간 (Minute Unit)|
+|refresh_token|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token Create API에서 생성된 Refresh Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|expires_in|Access Token 만료시간 (Minute Unit, 최소30분~최대60분분)|
 |grant_type|REFRESH|
 
 __[Output Parameter]__
@@ -366,12 +377,12 @@ __[Output Parameter]__
 
 #### Account - 회원 정보 조회
 
-__[GET]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/private/{version}/account?currency={currency}
+__[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/private/v1/account?currency={currency}```
 
 __[Curl]__
 
 ```
-curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 125543745d3c2712529a579d1383e89469e3cc9601cd08f22e4dd6c482b5d7b9' 'http://api.btrade.co.kr/api/private/v1/account?currency=BTC'
+curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 125543745d3c2712529a579d1383e89469e3cc9601cd08f22e4dd6c482b5d7b9' 'https://api.btrade.co.kr/api/private/v1/account?currency=BTC'
 ```
 
 __[Response Body]__
@@ -388,20 +399,25 @@ __[Response Body]__
 }
 ```
 
+__[Input Header]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+
 __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |currency|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-|version|version|
-|Authorization|Access Token|
+
 
 
 __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status: 0000|정상|
+|status|0000: 정상 / others: error|
 |account_id|유저 고유 번호|
 |balance|남은 코인|
 |trade_fee|적용 수수료율|
@@ -411,12 +427,12 @@ __[Output Parameter]__
 
 #### Balance - 회원 지갑 정보
 
-__[GET]__ &nbsp;&nbsp;&nbsp;http://api.btrade.co.kr/api/private/{version}/balance?currency={currency}
+__[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/private/v1/balance?currency={currency}```
 
 __[Curl]__
 
 ```
-curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 7488eeb56b924e369c2d60f738e795072d3e90740339dc42205f50743619cfb4' 'http://localhost:9999/api/private/v1/balance?currency=BTC'
+curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 7488eeb56b924e369c2d60f738e795072d3e90740339dc42205f50743619cfb4' 'https://api.btrade.co.kr/api/private/v1/balance?currency=BTC'
 ```
 
 __[Response Body]__
@@ -435,19 +451,23 @@ __[Response Body]__
 }
 ```
 
+__[Input Header]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+
 __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |currency|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-|version|version|
-|Authorization|Access Token|
 
 __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status: 0000|정상|
+|status|0000: 정상 / others: error|
 |total_{currency}|코인별 전체 Currency|
 |in_use_{currency}|코인별 사용중 Currency|
 |available_{currency}|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인별 사용가능 Curreny&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
@@ -460,13 +480,13 @@ __[Output Parameter]__
 __[GET]__ 
 
 ```
-http://localhost:9999/api/private/{version}/transaction?currency={currency}&deal_status={deal_status}&trd_state={trd_state}
+https://api.btrade.co.kr/api/private/v1/transaction?currency={currency}&deal_status={deal_status}&trd_state={trd_state}
 ```
 
 __[Curl]__
 
 ```
-curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 7488eeb56b924e369c2d60f738e795072d3e90740339dc42205f50743619cfb4' 'http://localhost:9999/api/private/v1/transaction?currency=BTC&deal_status=0&trd_state=OK'
+curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer 7488eeb56b924e369c2d60f738e795072d3e90740339dc42205f50743619cfb4' 'https://api.btrade.co.kr/api/private/v1/transaction?currency=BTC&deal_status=0&trd_state=OK'
 ```
 
 __[Response Body]__
@@ -510,6 +530,14 @@ __[Response Body]__
     },
     ...
 ```
+
+__[Input Header]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+
+
 __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
@@ -517,14 +545,12 @@ __[Input Parameter]__
 |currency|코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)|
 |deal_status|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상태 - 0(전체), 1(매도), 2(매수), 3(취소), 4(정정)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |trd_status|주문 상태 - OK, WAIT|
-|version|version|
-|Authorization|Access Token|
 
 __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status: 0000|정상|
+|status|0000: 정상 / others: error|
 |search|0(전체), 1(매도), 2(매수), 3(입금), 4(출금) 중|
 |orderId|주문번호|
 |price|거래금액|
@@ -538,7 +564,7 @@ __[Output Parameter]__
 &nbsp;
 &nbsp;
 
-### Cancel - 회원 판/구매 거래 취소
+### Cancel - 회원 판매 / 구매 거래 취소
 
 __[POST]__
 
@@ -555,7 +581,7 @@ __[Curl]__
 curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' --header 'Authorization: Bearer 7603c80ddcd596c6fffb642e44470b9cea0d79e2e67a7b9de9ff5b957d46c1c7' -d '{ \ 
    "currency" : "BTC", \ 
    "org_ord_no" : "190208154943577" \ 
- }' 'http://localhost:9999/api/private/v1/order/cancel'
+ }' 'https://api.btrade.co.kr/api/private/v1/order/cancel'
 ``` 
 
 __[Response Body]__
@@ -567,6 +593,13 @@ __[Response Body]__
 }
 ```
 
+__[Input Header]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|Authorization|Access Token|
+|Content-Type|The Content-Type entity header is used to indicate the media type of the resource.<br/>(application/json;charset=UTF-8)
+
 __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
@@ -575,18 +608,18 @@ __[Input Parameter]__
 |currency|코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)|
 |org_ord_no|주문번호|
 |nonce|현재날짜 (ex : 20190208)|
-|hstr|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sha-256(nonce, currency, secretKey, sheckSum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|hstr|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sha-256(nonce, currency, secretKey, sheckSum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status : 0000|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정상&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|status|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000: 정상 / others: error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
 &nbsp;
 
-### Place - 회원 판/구매 거래 주문 등록 및 체결
+### Place - 회원 판매 / 구매 거래 주문 등록 및 체결
 
 __[POST]__
 
@@ -609,7 +642,7 @@ curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'A
    "deal_money" : "10000", \ 
    "amount" : "1", \ 
    "fee_type" : "K" \ 
- }' 'http://localhost:9999/api/private/v1/order/place'
+ }' 'https://api.btrade.co.kr/api/private/v1/order/place'
 ```
 
 __[Response Body]__
@@ -621,6 +654,14 @@ __[Response Body]__
   "order_id": "1902081549435770000003"
 }
 ```
+
+__[Input Header]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|Authorization|Access Token|
+|Content-Type|The Content-Type entity header is used to indicate the media type of the resource.<br/>(application/json;charset=UTF-8)
+
 
 __[Input Parameter]__
 
@@ -636,7 +677,7 @@ __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status : 0000|정상|
+|status| 0000: 정상 / others: error|
 |order_id|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
