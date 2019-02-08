@@ -206,7 +206,7 @@ __[Response Body]__
       {
         "it_action": "sell",
         "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
+        "nResCoin": "00000000.00000000" 
       },
       {
         "it_action": "sell",
@@ -544,41 +544,17 @@ __[POST]__
 
 ```
 {
-  "access_token": "string",
-  "amount": 0,
-  "apikey": "string",
-  "currency": "string",
-  "currencyArray": [
-    "string"
-  ],
-  "deal_money": 0,
-  "deal_status": "string",
-  "deal_type": "string",
-  "expires_in": 0,
-  "fee_type": "string",
-  "grant_type": "string",
-  "hstr": "string",
-  "mb_id": "string",
-  "mb_idx": "string",
-  "nonce": "string",
-  "org_ord_no": "string",
-  "org_trd_type": "string",
-  "predict_time": "string",
-  "privatekey": "string",
-  "refresh_token": "string",
-  "trd_state": "string",
-  "trd_type": "string"
+  "currency" : "BTC",
+  "org_ord_no" : "190208154943577"
 }
 ```
 
 __[Curl]__
 
 ```
-curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: */*' --header 'Authorization: Bearer 9d6ab2ff4a182a794b2cf42438686e946ba6267ad844c05c34ca85a96de2d799' -d '{ \ 
-   "apikey": "BTkYXt3hv5BxzieKxHiE9zovAsDSVXraNpJ", \ 
-   "currency": "BTC", \ 
-   "hstr": "54c25b135d6e80129b71e399fecf522016ab528be7459b1c33c73730de67fad6", \ 
-   "nonce": "1549602674542", \ 
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' --header 'Authorization: Bearer 7603c80ddcd596c6fffb642e44470b9cea0d79e2e67a7b9de9ff5b957d46c1c7' -d '{ \ 
+   "currency" : "BTC", \ 
+   "org_ord_no" : "190208154943577" \ 
  }' 'http://localhost:9999/api/private/v1/order/cancel'
 ``` 
 
@@ -605,8 +581,7 @@ __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|status : 0000|정상|
-|data|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수행 결과&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|status : 0000|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정상&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
 &nbsp;
@@ -616,46 +591,92 @@ __[Output Parameter]__
 __[POST]__
 
 ```
+{
+  "currency" : "BTC",
+  "deal_type" : "B",
+  "deal_money" : "10000",
+  "amount" : "1",
+  "fee_type" : "K"
+}
 ```
 
 __[Curl]__
 
 ```
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' --header 'Authorization: Bearer 7603c80ddcd596c6fffb642e44470b9cea0d79e2e67a7b9de9ff5b957d46c1c7' -d '{ \ 
+   "currency" : "BTC", \ 
+   "deal_type" : "B", \ 
+   "deal_money" : "10000", \ 
+   "amount" : "1", \ 
+   "fee_type" : "K" \ 
+ }' 'http://localhost:9999/api/private/v1/order/place'
 ```
 
 __[Response Body]__
 
 ```
+{
+  "status": "0000",
+  "data": "Success",
+  "order_id": "1902081549435770000003"
+}
 ```
 
 __[Input Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
+|currency|코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)|
+|deal_type|판매/구매 구분 ( B-매수, S-매도)|
+|deal_money|주문 금액|
+|amount|주문 수량|
+|fee_type|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수수료 타입 ( K-krw수수료, C-코인수수료 )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 __[Output Parameter]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
+|status : 0000|정상|
+|order_id|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
 &nbsp;
 
 ### Status
 
+---
+
+#### 1. Token Error
+
 |&nbsp;&nbsp;&nbsp;Status Value&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
-|0000|Success|
+|2001|Member api key is not exist.|
+|2002|INCONSISTENCY HSTR|
+|2003|Refresh Token is not exist.|
+|2004|Access Token is not exist.|
+|2005|No Access Token in Header.|
+|2006|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP information has changed. Again create_access_token api call.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|2007|MEMBER_API_KEY is disabled.|
+|2008|MEMBER API is not authorized.|
+|2009|MEMBER API is not allow ip.|
+
+#### 2. Exception
+
+|&nbsp;&nbsp;&nbsp;Status Value&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
 |0001|코인종류 입력 에러|
-|0002|거래 수량은 소수점 5자리까지 입니다. / 거래 최소 입력단위 에러 / 존재하지 않는 주문번호|
+|0002|존재하지 않는 주문번호입니다.|
+|0003|주문가격을 확인하시기 바랍니다. / 거래가격은 1,000원 이상만 가능합니다.|
+|0006|주문수량을 확인하시기 바랍니다. / 코인 최대금액을 초과하였습니다. / 코인 거래단위를 확인하시기 바랍니다. / 이미 전체취소 등록되어 있습니다.|
 |1001|Invalid Parameter|
-|1002|Inconsistency hstr / Not coin|
-|1004|The data does not exist|
-|2001|Invalid Parameter|
-|5500|Invalid Parameter|
-|6000|Call origination limit|
-|9999|Interval server Error|
-|0003|[9001] 코인단가를 확인하시기 바랍니다.|
+|1004|The data does not exist.|
+|2000|DATA가 존재하지 않습니다.
+|3000|Order State Ready|
+|9999|Interval Server Error|
+
+
+
+
 
 
 
