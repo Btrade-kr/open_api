@@ -14,30 +14,11 @@ Btrade API
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;또한 지갑 API를 제공하여 암호화폐 유관 서비스를 구축하는데 도움을 드립니다.
 
-&nbsp;
 
-#### 권한 및 주의사항
-
-```
-
-
-                                               Description
-
-
-```
-&nbsp;
-
-#### Open API 사용 가이드
-
-```
-
-
-                                               Description
-
-
-```
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do)
 
 &nbsp;
+
 ### API 공지
 ---
 
@@ -335,7 +316,7 @@ __[Output Parameter]__
 
 #### Refresh - 토큰 갱신
 
-__[POST]__ &nbsp;&nbsp;&nbsp;
+__[POST]__
 
 ```
 {
@@ -558,6 +539,60 @@ __[Output Parameter]__
 |units|거래 Currency 수량|
 |transfer_date|거래일시|
 |{currency}1krw|통상적으로 말하는 시세|
+
+&nbsp;
+&nbsp;
+
+### Cancel - 회원 판/구매 거래 취소
+
+__[POST]__
+
+```
+{
+  "access_token": "string",
+  "amount": 0,
+  "apikey": "string",
+  "currency": "string",
+  "currencyArray": [
+    "string"
+  ],
+  "deal_money": 0,
+  "deal_status": "string",
+  "deal_type": "string",
+  "expires_in": 0,
+  "fee_type": "string",
+  "grant_type": "string",
+  "hstr": "string",
+  "mb_id": "string",
+  "mb_idx": "string",
+  "nonce": "string",
+  "org_ord_no": "string",
+  "org_trd_type": "string",
+  "predict_time": "string",
+  "privatekey": "string",
+  "refresh_token": "string",
+  "trd_state": "string",
+  "trd_type": "string"
+}
+```
+
+__[Curl]__
+
+```
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: */*' --header 'Authorization: Bearer 9d6ab2ff4a182a794b2cf42438686e946ba6267ad844c05c34ca85a96de2d799' -d '{ \ 
+   "apikey": "BTkYXt3hv5BxzieKxHiE9zovAsDSVXraNpJ", \ 
+   "currency": "BTC", \ 
+   "hstr": "54c25b135d6e80129b71e399fecf522016ab528be7459b1c33c73730de67fad6", \ 
+   "nonce": "1549602674542", \ 
+ }' 'http://localhost:9999/api/private/v1/order/cancel'
+``` 
+
+---
+
+&nbsp;
+&nbsp;
+
+### Place - 회원 판/구매 거래 주문 등록 및 체결
 
 
 
