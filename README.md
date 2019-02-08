@@ -51,7 +51,7 @@ Btrade API
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
-__[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'http://api.btrade.co.kr/api/ticker/currency/{coin_code}'```
+__[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'https://api.btrade.co.kr/api/ticker/currency/{coin_code}'```
 
 __[Response Body]__
 
@@ -354,7 +354,7 @@ __[Input Parameter]__
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |refresh_token|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token Create API에서 생성된 Refresh Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-|expires_in|Access Token 만료시간 (Minute Unit, 최소30분~최대60분분)|
+|expires_in|Access Token 만료시간 (Minute Unit, 최소30분~최대60분)|
 |grant_type|REFRESH|
 
 __[Output Parameter]__
