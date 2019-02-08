@@ -15,7 +15,7 @@ Btrade API
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;또한 지갑 API를 제공하여 암호화폐 유관 서비스를 구축하는데 도움을 드립니다.
 
 
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do)
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do)
 
 &nbsp;
 
@@ -96,9 +96,6 @@ __[Output Parameters]__
 |buy_price|거래 대기건 최고 구매가|
 |sell_price|거래 대기건 최소 판매가|
 |date|현재 시간 Timestamp|
-|status: 0001|시세 정보 누락|
-|status: 0002|구매 가격 정보 누락|
-|status: 0003|판매 가격 정보 누락|
 
 
 &nbsp;
@@ -408,9 +405,7 @@ __[Output Parameter]__
 |account_id|유저 고유 번호|
 |balance|남은 코인|
 |trade_fee|적용 수수료율|
-|created|가입시간 (Unix Time)|
-|status: 2001|회원 API Key가 존재하지 않음|
-|status: 2004|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token이 존재하지 않음&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|created|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가입시간 (Unix Time)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
 
@@ -645,8 +640,6 @@ __[Output Parameter]__
 
 &nbsp;
 &nbsp;
-
----
 
 ### Status
 
