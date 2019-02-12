@@ -15,21 +15,18 @@ Btrade API
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;또한 지갑 API를 제공하여 암호화폐 유관 서비스를 구축하는데 도움을 드립니다.
 
 
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do)
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do) (API Key는 __Btrade 마이페이지__에서 생성할 수 있습니다.)
+
 
 &nbsp;
 
 ### API 공지
 ---
 
-#### Open API  변경사항 안내 (2018. 10. 02)
+#### Open API  변경사항 안내 (-)
 
 
-&nbsp;&nbsp;&nbsp;안녕하세요.
-
-&nbsp;&nbsp;&nbsp;비트레이드 개발자 센터입니다.
-
-&nbsp;&nbsp;&nbsp;Open API 변경 사항에 대해 아래와 같이 안내 드립니다.
+$nbsp;$nbsp;$nbsp;
 
 
 ##### &nbsp;&nbsp;&nbsp; <Open API 변경사항>
