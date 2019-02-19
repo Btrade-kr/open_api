@@ -389,8 +389,8 @@ __[Response Body]__
   "status": "0000",
   "data": {
     "account_id": 3,
-    "balance": 5532121.7132,
-    "trade_fee": null,
+    "balance": 5532123.7132,
+    "trade_fee": 0.005,
     "created": 1521439134000
   }
 }
