@@ -1,10 +1,27 @@
-Btrade API
-=====
+
+# [Btrade API Document for Developer]
+### [INDEX]
+### 1. Public API
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
+### 2. Token
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신
+### 3. Private API
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-5. Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 주문 등록 및 체결
+### 4. Status
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-1. Token Error
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-2. Exception
 
 &nbsp;
-
-### API Info
 ---
+&nbsp;
+### [API Info]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Btrade는 개발자를 위해 API를 제공하여 다양한 앱과 프로그램을 개발할 수 있는 환경을 제공합니다.
 
@@ -19,31 +36,25 @@ Btrade API
 
 
 &nbsp;
-
-### API 공지
 ---
-
-#### Open API  변경사항 안내 (-)
-
-&nbsp;&nbsp;&nbsp;
-
-
+&nbsp;
+### [API 공지]
+#### Open API  변경사항 안내
 ##### &nbsp;&nbsp;&nbsp; <Open API 변경사항>
 
-&nbsp;&nbsp;&nbsp;해당 변경 사항은 __2018.10.10 11:00__ 부터 적용되오니, 해당 내용과 적용 시점을 반드시 확인하시고
+&nbsp;&nbsp;&nbsp;Public API 중 기존 마켓 구분을 하지 않던 Ticker API가 
+&nbsp;&nbsp;&nbsp;기존의 Ticker API와 같은 Ticker1, 마켓별로 구분하는 Ticker2로 분리되었습니다.
+&nbsp;&nbsp;&nbsp;(추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
 
-&nbsp;&nbsp;&nbsp;적용해주시기 바랍니다.
 
 &nbsp;
-
-&nbsp;
-
-### Reference
 ---
+&nbsp;
+### [Reference]
 
-#### 1. Public API
+### 1. Public API
 
-#### Ticker - 거래소 마지막 거래 정보
+#### 1-1.Ticker - 거래소 마지막 거래 정보
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
@@ -92,12 +103,74 @@ __[Output Parameters]__
 |buy_price|거래 대기건 최고 구매가|
 |sell_price|거래 대기건 최소 판매가|
 |date|현재 시간 Timestamp|
+---
+#### 1-2.Ticker - 거래소 마지막 거래 정보 (마켓 구분 추가)
 
+__[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/v1/ticker/currency/{coin_code}```
 
-&nbsp;
+__[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'https://api.btrade.co.kr/api/v1/ticker/currency/{coin_code}'```
 
-#### Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
+__[Response Body]__
 
+```
+{
+    "status": "0000",
+    "data": {
+        "KRW": {
+            "open_price": "1000",
+            "close_price": "10001000",
+            "low": "1000",
+            "high": "10003000",
+            "average_price": "8594071.364285713",
+            "units_traded": "6.014550000000000000",
+            "volume_1day": "6.014550000000000000",
+            "volume_7day": "30.019550000000000000",
+            "buy_price": "0010001000.00000000",
+            "sell_price": "0000000000.00000000",
+            "date": 1564475297693
+        },
+        "BTC": {
+            "open_price": "1.12345678",
+            "close_price": "1.12345678",
+            "low": "1.12345678",
+            "high": "1.12345678",
+            "average_price": "1.123456780000000000000000000000",
+            "units_traded": "2.000000000000000000",
+            "volume_1day": "2.000000000000000000",
+            "volume_7day": "2.000000000000000000",
+            "buy_price": "0000000001.12345678",
+            "sell_price": "0000000000.00000000",
+            "date": 1564475297863
+        }
+    }
+}
+```
+
+__[Input Parameter]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|coin_code|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+
+__[Output Parameters]__
+
+|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|:------------:|:---------:|
+|status: 0000|정상|
+|KRW, BTC| 마켓 코드|
+|open_price|최근 24시간 내 시작 거래금액|
+|close_price|최근 24시간 내 마지막 거래금액|
+|low|최근 24시간 내 최저 거래금액|
+|High|최근 24시간 내 최고 거래금액|
+|average_price|최근 24시간 내 평균 거래금액|
+|units_traded|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최근 24시간 내 Currency 거래량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|volume_1day|최근 1일간 Currency 거래량|
+|volume_7day|최근 7일간 Currency 거래량|
+|buy_price|거래 대기건 최고 구매가|
+|sell_price|거래 대기건 최소 판매가|
+|date|현재 시간 Timestamp|
+---
+#### 1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/orderbook/currency/{coin_code}```
 
 __[Curl]__ &nbsp;&nbsp;&nbsp;```curl -X GET --header 'Accept: application/json' 'https://api.btrade.co.kr/api/orderbook/currency/{coin_code}'```
@@ -121,89 +194,9 @@ __[Response Body]__
         "it_action": "buy",
         "it_market_cost": "0000000000.00000000",
         "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "buy",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
       }
     ],
     "asks": [
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
-      {
-        "it_action": "sell",
-        "it_market_cost": "0000000000.00000000",
-        "nResCoin": "00000000.00000000"
-      },
       {
         "it_action": "sell",
         "it_market_cost": "0000000000.00000000",
@@ -238,13 +231,11 @@ __[Output Parameters]__
 |nResCoin|사용 가능 코인|
 
 &nbsp;
-
-&nbsp;
-
-#### 2. Token
 ---
+&nbsp;
+### 2. Token
 
-#### Create - 최초 토큰 생성
+#### 2-1. Create - 최초 토큰 생성
 
 __[POST]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/v1/access_token```
 
@@ -306,11 +297,11 @@ __[Output Parameter]__
 |refresh_token|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token 갱신을 위한 Refresh Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |refresh_token_expire|Refresh Token 만료시간 (Unix Time)|
 
-&nbsp;
+---
 
-#### Refresh - 토큰 갱신
+#### 2-2. Refresh - 토큰 갱신
 
-__[POST]__
+__[POST]__&nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/v1/access_token```
 
 ```
 {
@@ -365,13 +356,11 @@ __[Output Parameter]__
 |refresh_token_expire|Refresh Token 만료시간 (Unix Time)|
 
 &nbsp;
-
-&nbsp;
-
-#### 3. Private API
 ---
+&nbsp;
+### 3. Private API
 
-#### Account - 회원 정보 조회
+#### 3-1. Account - 회원 정보 조회
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/private/v1/account?currency={currency}```
 
@@ -419,9 +408,9 @@ __[Output Parameter]__
 |trade_fee|적용 수수료율|
 |created|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가입시간 (Unix Time)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-&nbsp;
+---
 
-#### Balance - 회원 지갑 정보
+#### 3-2. Balance - 회원 지갑 정보
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/private/v1/balance?currency={currency}```
 
@@ -468,10 +457,9 @@ __[Output Parameter]__
 |in_use_{currency}|코인별 사용중 Currency|
 |available_{currency}|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인별 사용가능 Curreny&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-&nbsp;
-&nbsp;
+---
 
-#### Transaction - 회원 거래 내역
+#### 3-3. Transaction - 회원 거래 내역
 
 __[GET]__ 
 
@@ -557,13 +545,11 @@ __[Output Parameter]__
 |transfer_date|거래일시|
 |{currency}1krw|통상적으로 말하는 시세|
 
-&nbsp;
-&nbsp;
+---
 
-### Cancel - 회원 판매 / 구매 거래 취소
+#### 3-4. Cancel - 회원 판매 / 구매 거래 취소
 
-__[POST]__
-
+__[POST]__&nbsp;&nbsp;&nbsp;``https://api.btrade.co.kr/api/private/v1/order/cancel``
 ```
 {
   "currency" : "BTC",
@@ -612,12 +598,11 @@ __[Output Parameter]__
 |:------------:|:---------:|
 |status|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000: 정상 / others: error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-&nbsp;
-&nbsp;
+---
 
-### Place - 회원 판매 / 구매 거래 주문 등록 및 체결
+#### 3-5. Place - 회원 판매 / 구매 거래 주문 등록 및 체결
 
-__[POST]__
+__[POST]__&nbsp;&nbsp;&nbsp;``https://api.btrade.co.kr/api/private/v1/order/place``
 
 ```
 {
@@ -677,13 +662,11 @@ __[Output Parameter]__
 |order_id|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 &nbsp;
-&nbsp;
-
-### Status
-
 ---
+&nbsp;
+### 4. Status
 
-#### 1. Token Error
+#### 4-1. Token Error
 
 |&nbsp;&nbsp;&nbsp;Status Value&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -697,7 +680,9 @@ __[Output Parameter]__
 |2008|MEMBER API is not authorized.|
 |2009|MEMBER API is not allow ip.|
 
-#### 2. Exception
+---
+
+#### 4-2. Exception
 
 |&nbsp;&nbsp;&nbsp;Status Value&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -710,15 +695,3 @@ __[Output Parameter]__
 |2000|DATA가 존재하지 않습니다.
 |3000|Order State Ready|
 |9999|Interval Server Error|
-
-
-
-
-
-
-
-
-
-
-
-
