@@ -1,26 +1,6 @@
 
 # [Btrade API Document for Developer]
-### [INDEX]
-### 1. Public API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
-### 2. Token
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신 <br/>
-### 3. Private API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-5. Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 주문 등록 및 체결 <br/>
-### 4. Status
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-1. Token Error <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-2. Exception <br/>
 
-&nbsp;
----
-&nbsp;
 ### [API Info]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Btrade는 개발자를 위해 API를 제공하여 다양한 앱과 프로그램을 개발할 수 있는 환경을 제공합니다.
@@ -45,6 +25,27 @@
 &nbsp;&nbsp;&nbsp;Public API 중 기존 마켓 구분을 하지 않던 Ticker API가 기존의 Ticker API와 같은 Ticker1, <br/>&nbsp;&nbsp;&nbsp;마켓별로 구분하는 Ticker2로 분리되었습니다.
 &nbsp;&nbsp;&nbsp;(추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
 
+&nbsp;
+---
+&nbsp;
+
+### [INDEX]
+### 1. Public API
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
+### 2. Token
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신 <br/>
+### 3. Private API
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-5. Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 주문 등록 및 체결 <br/>
+### 4. Status
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-1. Token Error <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-2. Exception <br/>
 
 &nbsp;
 ---
