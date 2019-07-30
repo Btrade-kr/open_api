@@ -42,8 +42,7 @@
 #### Open API  변경사항 안내
 ##### &nbsp;&nbsp;&nbsp; <Open API 변경사항>
 
-&nbsp;&nbsp;&nbsp;Public API 중 기존 마켓 구분을 하지 않던 Ticker API가 
-&nbsp;&nbsp;&nbsp;기존의 Ticker API와 같은 Ticker1, 마켓별로 구분하는 Ticker2로 분리되었습니다.
+&nbsp;&nbsp;&nbsp;Public API 중 기존 마켓 구분을 하지 않던 Ticker API가 기존의 Ticker API와 같은 Ticker1, <br/>&nbsp;&nbsp;&nbsp;마켓별로 구분하는 Ticker2로 분리되었습니다.
 &nbsp;&nbsp;&nbsp;(추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
 
 
