@@ -4,7 +4,7 @@
 ### 1. Public API
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
 ### 2. Token
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신
@@ -695,3 +695,15 @@ __[Output Parameter]__
 |2000|DATA가 존재하지 않습니다.
 |3000|Order State Ready|
 |9999|Interval Server Error|
+
+
+
+
+
+
+
+
+
+
+
+
