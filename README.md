@@ -2,21 +2,21 @@
 # [Btrade API Document for Developer]
 ### [INDEX]
 ### 1. Public API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
 ### 2. Token
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신 <br/>
 ### 3. Private API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-5. Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 주문 등록 및 체결
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-5. Place &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 주문 등록 및 체결 <br/>
 ### 4. Status
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-1. Token Error
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-2. Exception
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-1. Token Error <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-2. Exception <br/>
 
 &nbsp;
 ---
@@ -32,7 +32,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;또한 지갑 API를 제공하여 암호화폐 유관 서비스를 구축하는데 도움을 드립니다.
 
 
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do) (API Key는 __Btrade 마이페이지__에서 생성할 수 있습니다.)
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[API Key 생성하러 가기](https://www.btrade.co.kr/mypage/mypage.do) (API Key는 Btrade 마이페이지 에서 생성할 수 있습니다.)
 
 
 &nbsp;
