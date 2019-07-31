@@ -24,7 +24,7 @@
 #### Open API  변경사항 안내
 ##### &nbsp;&nbsp;&nbsp; <Open API 변경사항>
 
-&nbsp;&nbsp;&nbsp;Ticker API가 기존의 Ticker API와 같은 Ticker1, 마켓 정보가 추가된 Ticker2로 분리되었습니다.<br/>&nbsp;&nbsp;&nbsp;(추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
+&nbsp;&nbsp;&nbsp;기존 거래소 마지막 거래 정보 API(Ticker)가 Deprecated 되고, 마켓 정보가 제공되는 Ticker가 추가 되었습니다.<br/>&nbsp;&nbsp;&nbsp;기존 거래소 마지막 거래 정보 API는 Ticker1을, 추가된 API는 Ticker2를 참고 바랍니다.
 
 &nbsp;
 
