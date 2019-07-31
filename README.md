@@ -34,7 +34,7 @@
 
 ### [INDEX]
 ### 1. Public API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (Deplicate) <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 <span style="color:red">(Deprecated)</span> <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook&nbsp; - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
 ### 2. Token
@@ -58,7 +58,7 @@
 
 ### 1. Public API
 
-#### 1-1.Ticker - 거래소 마지막 거래 정보 (Deplicate)
+#### 1-1.Ticker - 거래소 마지막 거래 정보 <span style="color:red">(Deplicate)</span>
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
