@@ -24,7 +24,7 @@
 #### Open API  변경사항 안내
 ##### &nbsp;&nbsp;&nbsp; <Open API 변경사항>
 
-&nbsp;&nbsp;&nbsp;Public API 중 기존 마켓 구분을 하지 않던 Ticker API가 기존의 Ticker API와 같은 Ticker1, <br/>&nbsp;&nbsp;&nbsp;마켓별로 구분하는 Ticker2로 분리되었습니다. (추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
+&nbsp;&nbsp;&nbsp;Ticker API가 기존의 Ticker API와 같은 Ticker1, 마켓 정보가 추가된 Ticker2로 분리되었습니다.<br/>&nbsp;&nbsp;&nbsp;(추가된 Ticker2의 경우 버전을 URL에 명시 하였습니다.)
 
 &nbsp;
 
@@ -34,14 +34,14 @@
 
 ### [INDEX]
 ### 1. Public API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-1. Ticker1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (Deplicate) <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2. Ticker2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 거래소 마지막 거래 정보 (마켓 구분 추가) <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-3. Orderbook&nbsp; - 거래소 판매 / 구매 등록 대기 또는 거래 중 내역 정보 <br/>
 ### 2. Token
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp; - 최초 토큰 생성 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh - 토큰 갱신 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-1. Create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 최초 토큰 생성 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2-2. Refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 토큰 갱신 <br/>
 ### 3. Private API
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-1. Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 정보 조회 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-2. Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 지갑 정보 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-3. Transaction - 회원 거래 내역 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4. Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 회원 판매 / 구매 거래 취소 <br/>
@@ -58,7 +58,7 @@
 
 ### 1. Public API
 
-#### 1-1.Ticker - 거래소 마지막 거래 정보
+#### 1-1.Ticker - 거래소 마지막 거래 정보 (Deplicate)
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
@@ -85,15 +85,15 @@ __[Response Body]__
 }
 ```
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |coin_code|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Output Parameters]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status: 0000|정상|
 |open_price|최근 24시간 내 시작 거래금액|
@@ -152,15 +152,15 @@ __[Response Body]__
 }
 ```
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |coin_code|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Output Parameters]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status: 0000|정상|
 |KRW, BTC| 마켓 코드|
@@ -222,15 +222,15 @@ __[Response Body]__
 ````
 
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |coin_code|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-__[Output Parameters]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |timestamp|현재시간|
 |order_currency|코인|
@@ -286,7 +286,7 @@ __[Response Body]__
 }
 ```
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -296,9 +296,9 @@ __[Input Parameter]__
 |grant_type|APIKEY|
 |expires_in|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token 만료시간 (Minute Time, 최소30분 ~ 최대 60분)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parmeter Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status| 0000: 정상 / others: error|
 |message|결과 메시지|
@@ -347,7 +347,7 @@ __[Response Body]__
 }
 ```
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -355,9 +355,9 @@ __[Input Parameter]__
 |expires_in|Access Token 만료시간 (Minute Unit, 최소30분~최대60분)|
 |grant_type|REFRESH|
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status|0000: 정상 / others: error|
 |message| 결과 메시지|
@@ -402,7 +402,7 @@ __[Input Header]__
 |:------------:|:---------:|
 |Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -410,9 +410,9 @@ __[Input Parameter]__
 
 
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status|0000: 정상 / others: error|
 |account_id|유저 고유 번호|
@@ -454,15 +454,15 @@ __[Input Header]__
 |:------------:|:---------:|
 |Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |currency|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코인명 (ALL, BTC, ETH, ETC, LTC, ZEC, etc.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status|0000: 정상 / others: error|
 |total_{currency}|코인별 전체 Currency|
@@ -535,7 +535,7 @@ __[Input Header]__
 |Authorization|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -543,9 +543,9 @@ __[Input Parameter]__
 |deal_status|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상태 - 0(전체), 1(매도), 2(매수), 3(취소), 4(정정)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |trd_status|주문 상태 - OK, WAIT|
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status|0000: 정상 / others: error|
 |search|0(전체), 1(매도), 2(매수), 3(입금), 4(출금) 중|
@@ -595,7 +595,7 @@ __[Input Header]__
 |Authorization|Access Token|
 |Content-Type|The Content-Type entity header is used to indicate the media type of the resource.<br/>(application/json;charset=UTF-8)
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -605,9 +605,9 @@ __[Input Parameter]__
 |nonce|현재날짜 (ex : 20190208)|
 |hstr|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sha-256(nonce, currency, secretKey, sheckSum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000: 정상 / others: error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 
@@ -658,7 +658,7 @@ __[Input Header]__
 |Content-Type|The Content-Type entity header is used to indicate the media type of the resource.<br/>(application/json;charset=UTF-8)
 
 
-__[Input Parameter]__
+__[Input Parameters]__
 
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
@@ -668,9 +668,9 @@ __[Input Parameter]__
 |amount|주문 수량|
 |fee_type|수수료 타입 ( K-krw수수료, C-코인수수료 )<br>*판매 시에는 krw 수수료만 가능 |
 
-__[Output Parameter]__
+__[Response]__
 
-|&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
+|&nbsp;&nbsp;&nbsp;Response Field&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |status| 0000: 정상 / others: error|
 |order_id|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
