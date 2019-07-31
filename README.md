@@ -58,7 +58,7 @@
 
 ### 1. Public API
 
-#### 1-1.Ticker - 거래소 마지막 거래 정보 <span style="color:red">(Deplicate)</span>
+#### 1-1.Ticker - 거래소 마지막 거래 정보 <span style="color:red">(Deprecated)</span>
 
 __[GET]__ &nbsp;&nbsp;&nbsp;```https://api.btrade.co.kr/api/ticker/currency/{coin_code}```
 
