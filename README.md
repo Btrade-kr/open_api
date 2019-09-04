@@ -291,7 +291,7 @@ __[Input Parameters]__
 |&nbsp;&nbsp;&nbsp;Parameter Name&nbsp;&nbsp;&nbsp;|Description|
 |:------------:|:---------:|
 |nonce|Request Time (Unix Time)|
-|hstr|sha256( apikey + secretkey + nonce )|
+|hstr|sha256( apikey + secretkey + nonce ) → 16진수 변환 스트링|
 |apikey|회원 API key|
 |grant_type|APIKEY|
 |expires_in|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Token 만료시간 (Minute Time, 최소30분 ~ 최대 60분)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
@@ -563,6 +563,7 @@ __[Response]__
 #### 3-4. Cancel - 회원 판매 / 구매 거래 취소
 
 __[POST]__&nbsp;&nbsp;&nbsp;``https://api.btrade.co.kr/api/private/v1/order/cancel``
+
 ```
 {
   "currency" : "BTC",
@@ -688,7 +689,7 @@ __[Response]__
 |2001|Member api key is not exist.|
 |2002|INCONSISTENCY HSTR|
 |2003|Refresh Token is not exist.|
-|2004|Access Token is not exist.|
+|2004|Access Token is not exist or expired.|
 |2005|No Access Token in Header.|
 |2006|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP information has changed. Again create_access_token api call.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |2007|MEMBER_API_KEY is disabled.|
